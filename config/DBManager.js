@@ -37,9 +37,9 @@ async function getAllBookInfo() {
 }
 
 // Add a new book to the database
-async function addBookInfo(book) {
+async function addBookInfo(title,author,date,category) {
   try {
-    const result = await booksCollection.insertOne(book);
+    const result = await booksCollection.insertOne(title,author,date,category);
     return result.acknowledged;
   } catch (error) {
     console.error('Error adding book:', error);

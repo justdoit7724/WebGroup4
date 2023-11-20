@@ -21,7 +21,7 @@ module.exports = function () {
     app.get('/', async function(req, res) {
       try {
         // Assuming getAllBookInfo() returns an array of books
-        const dbbooks = await getAllBookInfo();
+        const dbbooks = await dbManager.getAllBookInfo();
         console.log(dbbooks);
         // Pass the database name and books to the EJS template
         res.render('home', {books: dbbooks });
@@ -35,7 +35,7 @@ module.exports = function () {
     // Edit route
     app.get('/edit', async function(req, res, next) {
       try {
-        const dbbooks = await getAllBookInfo();
+        const dbbooks = await dbManager.getAllBookInfo();
         console.log(dbbooks);
         
         res.render('edit', {books: dbbooks });
