@@ -1,0 +1,114 @@
+/*
+
+Home part*/
+
+  
+
+table, th, td {
+
+    border: 1px solid black;
+    
+    border-collapse: collapse;
+    
+    }
+    
+    th:nth-child(even),td:nth-child(even) {
+    
+    background-color: #D6EEEE;
+    
+    }
+    
+    .book-table {
+    
+    border-collapse: collapse;
+    
+    width: 50%;
+    
+    margin: 0 auto;
+    
+    }
+    
+    .book-table td {
+    
+    padding: 10px;
+    
+    border: 3px solid #000000;
+    
+    }
+    
+    .book-table strong {
+    
+    font-weight: bold;
+    
+    margin-right: 5px;
+    
+    }
+    
+      
+    
+    /*Main nav part*/
+    
+    nav {
+    
+    background-color: #D6EEEE;
+    
+    padding: 10px;
+    
+    }
+    
+    .navbar-container {
+    
+    display: flex;
+    
+    align-items: center;
+    
+    justify-content: space-between;
+    
+    }
+    
+    .navbar-links ul {
+    
+    list-style: none;
+    
+    margin: 0;
+    
+    padding: 0;
+    
+    }
+    
+    .navbar-links li {
+    
+    display: inline-block;
+    
+    margin-right: 15px;
+    
+    }
+    
+    .navbar-links a {
+    
+    text-decoration: none;
+    
+    color: rgb(0, 0, 0); /* Add your desired text color */
+    
+    font-weight: bold;
+    
+    font-size: 16px;
+    
+    }
+    
+    .navbar-links a:hover {
+    
+    color: #ff9900; /* Add your desired hover color */
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
