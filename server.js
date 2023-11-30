@@ -1,11 +1,25 @@
 require('dotenv').config(); // This should be the first line to ensure environment variables are loaded first
+var express = require('express');
+
+var bodyParser = require('body-parser');
 
 console.log(process.env.MONGODB_CONNECTION_STRING);
 
-const expressConfig = require('./config/express'); // This should be a function that returns an express app
+const expressConfig = require('./config/router.js'); // This should be a function that returns an express app
 const { connectDB } = require("./config/DBManager.js"); // Ensure correct case-sensitivity in file paths and method names
 
 var app = expressConfig(); // Invoke the function to get the express app
+
+
+app.set('views', './app/views');
+app.set('view engine', 'ejs');
+app.use(express.static('./public'));
+app.use(express.static("./node_modules"));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+
 const port = process.env.PORT || 3000; // Use the PORT from environment variables if defined, otherwise default to 3000
 
 // Connect to the database before starting the server
