@@ -2,7 +2,7 @@ const {Router} = require('express');
 const router = Router();
 var dbManager = require('../DB/DBManager'); 
 const jwt = require('jsonwebtoken');
-const {createToken} = require("../utils/utils");
+const {createToken, requireAuth} = require("../utils/utils");
 const bcrypt = require("bcrypt");
 require('dotenv').config();
 
@@ -24,7 +24,7 @@ const { getAllBookInfo } = require('../DB/DBManager');
 });
 
 // Edit route
-router.get('/edit', async function(req, res, next) {
+router.get('/edit',requireAuth, async function(req, res, next) {
   try {
     const dbbooks = await dbManager.getAllBookInfo();
     console.log(dbbooks);
