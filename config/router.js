@@ -1,7 +1,13 @@
 const {Router} = require('express');
 const router = Router();
-var dbManager = require('./DBManager'); 
 
+var dbManager = require('../DB/DBManager'); 
+const jwt = require('jsonwebtoken');
+const {createToken, requireAuth} = require("../utils/utils");
+const bcrypt = require("bcrypt");
+require('dotenv').config();
+const { getAllBookInfo } = require('../DB/DBManager'); 
+var dbManager = require('./DBManager'); 
 const { getAllBookInfo } = require('./DBManager'); 
 
     // Home route
@@ -19,6 +25,8 @@ const { getAllBookInfo } = require('./DBManager');
 });
 
 // Edit route
+
+router.get('/edit',requireAuth, async function(req, res, next) {
 router.get('/edit', async function(req, res, next) {
   try {
     const dbbooks = await dbManager.getAllBookInfo();
@@ -50,6 +58,45 @@ router.delete('/book/:title', async function(req, res, next) {
   }
 });
 
+
+router.get("/signup",(req,res)=>res.render("signup"));
+router.post('/signup', async (req, res) =>{
+    try{
+        const { email, password } = req.body;
+        const salt = await bcrypt.genSalt();
+        const hashedPassword = await bcrypt.hash(password, salt);
+        const user = await dbManager.addUser({ email, password: hashedPassword });
+        const token = createToken(user._id);
+        res.cookie("jwt",token,{httpOnly:true,maxAge:3*24*60*60*1000});
+        res.status(201).json({user: user._id});
+    } catch (err){
+        console.log(err);
+    }
+});
+
+router.get('/login',(req,res)=>res.render('login'));
+router.post('/login', async (req, res) =>{
+    try{
+      const { email, password } = req.body;
+      const user = await dbManager.loginUser(email);
+      if (user) {
+        const isMatch = await bcrypt.compare(password, user.password); // Compare with hashed password
+        if (isMatch) {
+          const token = createToken(user._id);
+          res.cookie("jwt",token,{httpOnly: true, maxAge:3*24*60*60*1000});
+          res.status(201).json({user: user._id});
+          return user; 
+        } else {
+            // Passwords do not match
+            res.status(401).send('Incorrect password');
+        }
+    } else {
+        res.status(404).send('User not found');
+    }  
+    } catch (err){
+        console.log(err);
+    }
+});
 
 module.exports = router;
 

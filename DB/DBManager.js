@@ -1,6 +1,7 @@
 const { MongoClient } = require("mongodb");
-
+const bcrypt = require('bcrypt');
 const connectionString = process.env.MONGODB_CONNECTION_STRING;
+
 const client = new MongoClient(connectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -8,6 +9,11 @@ const client = new MongoClient(connectionString, {
 
 const dbName = "Library";
 const collName = "Shelter";
+
+
+let credentials;
+const userCollName = "LoginCredentials";
+
 
 let db;
 let booksCollection;
@@ -18,6 +24,7 @@ async function connectDB() {
     await client.connect();
     db = client.db(dbName);
     booksCollection = db.collection(collName);
+    credentials = db.collection(userCollName);
     console.log(`Connected to database: ${dbName}`);
     return true;
   } catch (error) {
@@ -58,6 +65,29 @@ async function removeBookInfo(title) {
   }
 }
 
+
+async function addUser(username,password){
+  try {
+    const user = await credentials.insertOne(username,password);
+    return user.acknowledged;
+  } catch (error) {
+    console.error("Error adding User: ", error);
+    return false;
+  }
+};
+
+async function loginUser(username){
+  try {
+    // Use findOne with an object to specify the email field
+    const user = await credentials.findOne({ email: username });
+    return user; // Return the user if found, or null if not found
+  } catch (error) {
+    console.error("Error in findUserByEmail: ", error);
+    return null; // Return null in case of an error
+  }
+};
+
+
 // Close the database connection
 async function closeConnection() {
   await client.close();
@@ -69,4 +99,6 @@ module.exports = {
   addBookInfo,
   removeBookInfo,
   closeConnection,
+  addUser,
+  loginUser
 };
