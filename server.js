@@ -18,12 +18,7 @@ app.use(express.static('./public'));
 app.use(express.static("./node_modules"));
 app.set('views', './app/views');
 app.set('view engine', 'ejs');
-
 const expressConfig = require('./config/router.js'); // This should be a function that returns an express app
-const { connectDB } = require("./config/DBManager.js"); // Ensure correct case-sensitivity in file paths and method names
-
-var app = expressConfig(); // Invoke the function to get the express app
-
 
 app.set('views', './app/views');
 app.set('view engine', 'ejs');
