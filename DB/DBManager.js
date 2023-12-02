@@ -1,7 +1,7 @@
 const { MongoClient } = require("mongodb");
 const bcrypt = require('bcrypt');
-
 const connectionString = process.env.MONGODB_CONNECTION_STRING;
+
 const client = new MongoClient(connectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -10,8 +10,11 @@ const client = new MongoClient(connectionString, {
 const dbName = "Library";
 const collName = "Shelter";
 
+
 let credentials;
 const userCollName = "LoginCredentials";
+
+
 let db;
 let booksCollection;
 
@@ -62,6 +65,7 @@ async function removeBookInfo(title) {
   }
 }
 
+
 async function addUser(username,password){
   try {
     const user = await credentials.insertOne(username,password);
@@ -82,6 +86,7 @@ async function loginUser(username){
     return null; // Return null in case of an error
   }
 };
+
 
 // Close the database connection
 async function closeConnection() {
