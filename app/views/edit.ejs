@@ -1,28 +1,43 @@
 <%- include ('partials/header.ejs') %>
-<%- include ('partials/main_nav.ejs') %>
+    <%- include ('partials/main_nav.ejs') %>
 
 
-<main>
-    <div>
-    
-        <h2>edit</h2>
-        
-        
-        <!-- TEST -->
-        <% for (let i = 0; i < books.length; i++) { %>
-            <li>
-            <strong>Title:</strong> <%= books[i].title %><br>
-            <strong>Author:</strong> <%= books[i].author %><br>
-            <strong>Date:</strong> <%= books[i].date %><br>
-            <strong>Category:</strong> <%= books[i].Category %><br>
-            </li>
-        <% } %>
+        <main>
+            <div>
+
+                <h2>Edit</h2>
+                <div>
+                    <form id="addBookForm" action="/book" method="POST">
+                        <input type="text" name="title" placeholder="Enter book name" required>
+                        <input type="text" name="author" placeholder="Enter author name" required>
+                        <input type="date" name="date" placeholder="Enter the Date of Publication" required>
+                        <input type="Category" name="category" placeholder="Enter the Category">
+                        <button type="submit">Add Book</button>
+                    </form>
+                    <form id="deleteBookForm">
+                        <input id="deleteBookTitle" type="text" name="title" placeholder="Enter Title of the Book"
+                            required>
+                        <button type="submit">Delete Book</button>
+                    </form>
+                </div>
+
+                <!-- TEST -->
+                <% for (let i=0; i < books.length; i++) { %>
+                    <li>
+                        <strong>Title:</strong>
+                        <%= books[i].title %><br>
+                            <strong>Author:</strong>
+                            <%= books[i].author %><br>
+                                <strong>Date:</strong>
+                                <%= books[i].date %><br>
+                                    <strong>Category:</strong>
+                                    <%= books[i].category %><br>
+                    </li>
+                    <% } %>
 
 
-    </div>
-</main>
+            </div>
+            <script src="/Javascripts/AddBook.js"></script>
+            <script src="/Javascripts/DeleteBook.js"></script>
 
-
-
-
-   
+        </main>
