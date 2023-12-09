@@ -6,65 +6,29 @@
                 <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
                 <h2>Home</h2>
                 <table class="book-table" align="center">
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Date</th>
+                        <th>Category</th>
+                    </tr>
                     <% for (let i=0; i < books.length; i++) { %>
                         <tr>
-                            <td><strong>Title:</strong></td>
                             <td>
                                 <%= books[i].title %>
                             </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Author:</strong></td>
                             <td>
                                 <%= books[i].author %>
                             </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Date:</strong></td>
                             <td>
                                 <%= books[i].date %>
                             </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Category:</strong></td>
                             <td>
                                 <%= books[i].category %>
                             </td>
                         </tr>
-                        <tr>
-                            <td colspan="2"></td>
-                        </tr>
                         <% } %>
                 </table>
             </div>
-            <style>
-                table,
-                th,
-                td {
-                    border: 1px solid black;
-                    border-collapse: collapse;
-                }
-
-                th:nth-child(even),
-                td:nth-child(even) {
-                    background-color: #D6EEEE;
-                }
-
-                .book-table {
-                    border-collapse: collapse;
-                    width: 50%;
-                    margin: 0 auto;
-                }
-
-                .book-table td {
-                    padding: 10px;
-                    border: 3px solid #000000;
-                }
-
-                .book-table strong {
-                    font-weight: bold;
-                    margin-right: 5px;
-                }
-            </style>
         </main>
         <script src="/Javascripts/Toast.js"></script>

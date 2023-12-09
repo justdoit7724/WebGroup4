@@ -21,19 +21,30 @@
                     </form>
                 </div>
 
-                <!-- TEST -->
-                <% for (let i=0; i < books.length; i++) { %>
-                    <li>
-                        <strong>Title:</strong>
-                        <%= books[i].title %><br>
-                            <strong>Author:</strong>
-                            <%= books[i].author %><br>
-                                <strong>Date:</strong>
-                                <%= books[i].date %><br>
-                                    <strong>Category:</strong>
-                                    <%= books[i].category %><br>
-                    </li>
-                    <% } %>
+                <table class="book-table" align="center">
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Date</th>
+                        <th>Category</th>
+                    </tr>
+                    <% for (let i=0; i < books.length; i++) { %>
+                        <tr>
+                            <td>
+                                <%= books[i].title %>
+                            </td>
+                            <td>
+                                <%= books[i].author %>
+                            </td>
+                            <td>
+                                <%= books[i].date %>
+                            </td>
+                            <td>
+                                <%= books[i].category %>
+                            </td>
+                        </tr>
+                        <% } %>
+                </table>
 
 
             </div>
