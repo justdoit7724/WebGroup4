@@ -1,10 +1,9 @@
 <%- include ('partials/header.ejs') %>
     <%- include ('partials/main_nav.ejs') %>
 
-
         <main>
             <div>
-
+                <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
                 <h2>Home</h2>
                 <table class="book-table" align="center">
                     <% for (let i=0; i < books.length; i++) { %>
@@ -68,3 +67,4 @@
                 }
             </style>
         </main>
+        <script src="/Javascripts/Toast.js"></script>

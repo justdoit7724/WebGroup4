@@ -14,7 +14,7 @@ const { getAllBookInfo } = require('../DB/DBManager');
     const dbbooks = await dbManager.getAllBookInfo();
     console.log(dbbooks);
     // Pass the database name and books to the EJS template
-    res.render('home', {books: dbbooks });
+    res.render('home', {books: dbbooks, query: req.query });
   } catch (error) {
     // If there's an error, send an error response
     res.status(500).send(error.message);
@@ -92,6 +92,12 @@ router.post('/login', async (req, res) =>{
         console.log(err);
     }
 });
+
+router.get('/logout',(req,res) =>{
+  res.cookie('jwt', '', {maxAge:1});
+  res.redirect('/?loggedOut=true');
+})
+
 
 module.exports = router;
 
