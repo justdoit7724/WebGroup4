@@ -6,8 +6,6 @@ var bodyParser = require('body-parser');
 const { connectDB } = require("./DB/DBManager.js"); // Ensure correct case-sensitivity in file paths and method names
 const Route = require("./config/router.js");
 const {requireAuth} = require("./utils/utils");
-var express = require('express');
-var bodyParser = require('body-parser');
 
 // Invoke the function to get the router app
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,20 +16,6 @@ app.use(express.static('./public'));
 app.use(express.static("./node_modules"));
 app.set('views', './app/views');
 app.set('view engine', 'ejs');
-
-const expressConfig = require('./config/router.js'); // This should be a function that returns an express app
-const { connectDB } = require("./config/DBManager.js"); // Ensure correct case-sensitivity in file paths and method names
-
-var app = expressConfig(); // Invoke the function to get the express app
-
-
-app.set('views', './app/views');
-app.set('view engine', 'ejs');
-app.use(express.static('./public'));
-app.use(express.static("./node_modules"));
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
 const port = process.env.PORT || 3000; // Use the PORT from environment variables if defined, otherwise default to 3000
 
