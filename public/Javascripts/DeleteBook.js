@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function(){
     .then(response => {
         // Redirect to home page on successful deletion
         if (response.ok) {
-            window.location.href = '/';
+            window.location.href = '/edit';
         } else{
             return response.json();
         }   
