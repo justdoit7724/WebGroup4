@@ -1,10 +1,8 @@
-
 /* Base styles */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #1a1a2e;
     color: #ffffff;
-
 }
 /* Navbar Styles */
 .navbar {
@@ -24,17 +22,14 @@ body {
     width: auto;
 }
 
-
 .nav-items {
     display: flex;
     align-items: center;
-
 }
 
 .nav-item {
     display: flex;
     align-items: center;
-
     margin-left: 15px;
 }
 
@@ -42,7 +37,6 @@ body {
     height: 30px;
     width: auto;
     margin-right: 8px;
-
 }
 
 .nav-item a {
@@ -51,14 +45,12 @@ body {
     font-size: 16px;
 }
 
-
 .team {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
 }
-
 
 .team-member {
     background-color: #13151c;
@@ -77,7 +69,6 @@ body {
 .team-member h2 {
     margin-top: 10px;
     font-size: 18px;
-
 }
 
 .team-member p {
@@ -104,7 +95,6 @@ form {
     align-items: center;
     justify-content: center;
     padding: 20px;
-
     margin: auto;
     max-width: 400px;
     background-color: #1e2029;
@@ -119,7 +109,6 @@ form input[type="password"] {
     padding: 12px;
     margin-bottom: 15px;
     border: none;
-
     border-radius: 5px;
     font-size: 16px;
     background-color: #13151c;
@@ -173,5 +162,4 @@ form button:hover {
 .book-table tbody tr:nth-child(even) {
     background-color: #191b21;
     color: #ccc;
-
 }
