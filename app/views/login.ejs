@@ -16,7 +16,7 @@
                 e.preventDefault();
                 const email = form.email.value; 
                 const password = form.password.value;
-                const res = await fetch("/signup",{
+                const res = await fetch("/login",{
                     method: "post",
                     body: JSON.stringify({email,password}),
                     headers:{"Content-type":"application/json"}
