@@ -1,7 +1,5 @@
 <%- include ('partials/header.ejs') %>
     <%- include ('partials/main_nav.ejs') %>
-
-
         <main>
             <div>
 
@@ -21,30 +19,30 @@
                     </form>
                 </div>
 
-                <table class="book-table" align="center">
-                    <tr>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Date</th>
-                        <th>Category</th>
-                    </tr>
-                    <% for (let i=0; i < books.length; i++) { %>
-                        <tr>
-                            <td>
-                                <%= books[i].title %>
-                            </td>
-                            <td>
-                                <%= books[i].author %>
-                            </td>
-                            <td>
-                                <%= books[i].date %>
-                            </td>
-                            <td>
-                                <%= books[i].category %>
-                            </td>
-                        </tr>
-                        <% } %>
-                </table>
+                
+                <div>
+                    <table class="book-table" align="center">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Date</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for (let i=0; i < books.length; i++) { %>
+                                <tr>
+                                    <td><%= books[i].title %></td>
+                                    <td><%= books[i].author %></td>
+                                    <td><%= books[i].date %></td>
+                                    <td><%= books[i].category %></td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+    
+
 
 
             </div>

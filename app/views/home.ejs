@@ -1,34 +1,32 @@
 <%- include ('partials/header.ejs') %>
     <%- include ('partials/main_nav.ejs') %>
 
-        <main>
-            <div>
-                <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
-                <h2>Home</h2>
-                <table class="book-table" align="center">
+    <main>
+        <div>
+            <table class="book-table" align="center">
+                <thead>
+
                     <tr>
                         <th>Title</th>
                         <th>Author</th>
                         <th>Date</th>
                         <th>Category</th>
                     </tr>
+                </thead>
+                <tbody>
                     <% for (let i=0; i < books.length; i++) { %>
                         <tr>
-                            <td>
-                                <%= books[i].title %>
-                            </td>
-                            <td>
-                                <%= books[i].author %>
-                            </td>
-                            <td>
-                                <%= books[i].date %>
-                            </td>
-                            <td>
-                                <%= books[i].category %>
-                            </td>
+                            <td><%= books[i].title %></td>
+                            <td><%= books[i].author %></td>
+                            <td><%= books[i].date %></td>
+                            <td><%= books[i].category %></td>
                         </tr>
-                        <% } %>
-                </table>
-            </div>
-        </main>
-        <script src="/Javascripts/Toast.js"></script>
+                    <% } %>
+                </tbody>
+            </table>
+
+
+
+    </div>
+    </main>
+

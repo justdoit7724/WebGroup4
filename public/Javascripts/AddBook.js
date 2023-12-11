@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function(){
         .then(response => {
             // redirecting user to home page after successful book addition into database
             if(response.ok){
-                window.location.href = '/';
+                window.location.href = '/edit';
             } 
             
             // If the response is not successful, throw an error
