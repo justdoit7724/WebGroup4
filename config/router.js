@@ -93,5 +93,10 @@ router.post('/login', async (req, res) =>{
     }
 });
 
+router.get('/logout',(req,res) =>{
+  res.cookie('jwt', '', {maxAge:1});
+  res.redirect('/?loggedOut=true');
+})
+
 module.exports = router;
 
